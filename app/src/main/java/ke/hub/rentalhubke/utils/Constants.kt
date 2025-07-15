@@ -7,23 +7,23 @@ class Constants {
     companion object {
         val pages = listOf(
             Onboarding(
-                title = "Welcome to Hakiba",
-                description = "Your journey to smarter savings and quick loans starts here.",
+                title = "Welcome to Rental Hub Ke",
+                description = "You rental journey starts here. Discover, save, and manage your rentals with ease.",
                 imageRes = R.drawable.undraw_destination_fkst
             ),
             Onboarding(
-                title = "Save with Purpose",
-                description = "Set goals and watch your savings grow. Hakiba helps you save for what matters most.",
+                title = "Find Your Perfect Rental",
+                description = "Browse through a wide range of rental properties tailored to your needs.",
                 imageRes = R.drawable.undraw_house_searching_g2b8
             ),
             Onboarding(
-                title = "Track and Celebrate Progress",
-                description = "Stay motivated with real-time insights and rewards.",
+                title = "Perfect home for you",
+                description = "Explore a variety of rental options that suit your lifestyle and budget.",
                 imageRes = R.drawable.undraw_apartment_rent_oodr
             ),
             Onboarding(
-                title = "Your Money is Safe with Us",
-                description = "Built on trust, powered by security. You get transparency and accountability.",
+                title = "Find fast and easy",
+                description = "Experience a seamless rental process with quick listings and easy navigation.",
                 imageRes = R.drawable.undraw_select_house_l2l0
             )
         )
