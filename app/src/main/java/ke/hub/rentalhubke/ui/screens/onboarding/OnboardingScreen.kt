@@ -1,5 +1,8 @@
 package ke.hub.rentalhubke.ui.screens.onboarding
 
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -20,10 +23,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -73,32 +76,44 @@ fun OnboardingScreenContent(
     ){
         HorizontalPager(
             state = pagerState,
-            modifier = Modifier.weight(0.8f)
+            modifier = Modifier.weight(0.6f)
         ) { page ->
             OnboardingItem(page=pages[page], modifier = modifier)
         }
-        Spacer(modifier = Modifier.weight(0.2f))
+        Spacer(
+            modifier = Modifier.weight(0.2f)
+        )
         Row(
             modifier = Modifier
                 .padding(16.dp)
-                .fillMaxWidth(),
+                .fillMaxWidth()
+                .weight(0.1f),
             horizontalArrangement = Arrangement.Center
         ){
             repeat(pages.size) { index ->
                 val isSelected = pagerState.currentPage == index
+                val animatedWidth by animateDpAsState(
+                    targetValue = if (isSelected) 24.dp else 8.dp,
+                    animationSpec = tween(durationMillis = 300)
+                )
+                val animatedColor by animateColorAsState(
+                    targetValue = if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.secondary,
+                    animationSpec = tween(durationMillis = 300)
+                )
                 Box(
                     modifier = Modifier
                         .padding(4.dp)
-                        .width(35.dp)
+                        .width(animatedWidth)
                         .height(8.dp)
                         .border(
-                            width = 1.dp, color = if (isSelected) MaterialTheme.colorScheme.primary
-                            else Color.Gray,
+                            width = 1.dp,
+                            color = animatedColor,
                             shape = RoundedCornerShape(10.dp)
                         )
                         .background(
                             color = if (isSelected) MaterialTheme.colorScheme.primary
-                            else MaterialTheme.colorScheme.background, shape = CircleShape
+                            else MaterialTheme.colorScheme.background,
+                            shape = CircleShape
                         )
                 )
             }

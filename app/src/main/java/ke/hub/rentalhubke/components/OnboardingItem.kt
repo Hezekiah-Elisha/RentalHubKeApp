@@ -3,6 +3,7 @@ package ke.hub.rentalhubke.components
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
@@ -25,7 +26,7 @@ fun OnboardingItem(
     page: Onboarding
 ) {
     Column(
-        modifier = modifier,
+        modifier = modifier.fillMaxWidth().padding(16.dp).fillMaxHeight(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
@@ -33,20 +34,29 @@ fun OnboardingItem(
             painter = painterResource(id = page.imageRes),
             contentDescription = "Onboarding Image",
             modifier = modifier.padding(16.dp)
+                .weight(1f)
         )
-        Text(
-            modifier= modifier.fillMaxWidth(),
-            text = page.title,
-            fontSize = MaterialTheme.typography.headlineLarge.fontSize,
-            textAlign = TextAlign.Center,
-            fontWeight = FontWeight.SemiBold
-        )
-        Text(
-            modifier= modifier.fillMaxWidth(),
-            text = page.description,
-            fontSize = MaterialTheme.typography.labelLarge.fontSize,
-            textAlign = TextAlign.Center
-        )
+        Column (
+            modifier = modifier.fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ){
+            Text(
+                modifier= modifier.fillMaxWidth(),
+                text = page.title,
+                style = MaterialTheme.typography.headlineLarge,
+                fontSize = MaterialTheme.typography.headlineLarge.fontSize,
+                textAlign = TextAlign.Center,
+                fontWeight = FontWeight.SemiBold
+            )
+            Text(
+                modifier= modifier.fillMaxWidth(),
+                text = page.description,
+                style = MaterialTheme.typography.labelLarge,
+                fontSize = MaterialTheme.typography.labelLarge.fontSize,
+                textAlign = TextAlign.Center
+            )
+        }
     }
 }
 
@@ -56,7 +66,7 @@ private fun OnBoardingItemPreview() {
     RentalHubKeTheme {
         OnboardingItem(
             page = Onboarding(
-                title = "Welcome To Hakiba",
+                title = "Welcome To Rental Hub KE",
                 description = "Your journey to smarter savings and quick loans starts here.",
                 imageRes = R.drawable.undraw_destination_fkst
             )
