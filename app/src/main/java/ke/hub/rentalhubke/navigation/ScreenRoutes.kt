@@ -8,8 +8,6 @@ sealed class ScreenRoutes (val route: String) {
     object Home : ScreenRoutes("home")
     object Profile : ScreenRoutes("profile")
     object Bookmarks : ScreenRoutes("bookmarks")
-    object PropertyDetails : ScreenRoutes("property_details/{propertyId}") {
-        fun createRoute(propertyId: String) = "property_details/$propertyId"
-    }
+    object PropertyDetails : ScreenRoutes("property_details")
     object Search : ScreenRoutes("search")
 }

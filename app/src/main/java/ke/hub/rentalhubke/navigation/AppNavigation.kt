@@ -18,6 +18,7 @@ import ke.hub.rentalhubke.ui.screens.bookmarks.BookmarksScreen
 import ke.hub.rentalhubke.ui.screens.home.HomeScreen
 import ke.hub.rentalhubke.ui.screens.onboarding.OnboardingScreen
 import ke.hub.rentalhubke.ui.screens.profile.ProfileScreen
+import ke.hub.rentalhubke.ui.screens.property.PropertyScreen
 import ke.hub.rentalhubke.ui.screens.splash.SplashScreen
 
 @Composable
@@ -92,6 +93,13 @@ fun AppNavigation(
                     modifier=modifier.padding(innerPadding),
                     navController = navController
                 )
+            }
+            composable(ScreenRoutes.PropertyDetails.route) {
+                showBottomBar.value =  false
+                 PropertyScreen(
+                     modifier=modifier.padding(innerPadding),
+                     navController = navController
+                 )
             }
         }
     }
